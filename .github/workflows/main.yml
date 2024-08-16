@@ -5,11 +5,11 @@ on:
       - main
 
 jobs:
-  test-build_push:
+  test-build-push:
     runs-on: ubuntu-latest
     steps:
-      - name: Git Checkout
+      #   - name: Git Checkout
       - uses: actions/checkout@v4
 
-      - name: Listing File on Runner
+      #   - name: Listing File on Runner
       - run: ls -la

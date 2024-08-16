@@ -1,0 +1,15 @@
+name: Github action autodeploy container to VM
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test-build_push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Git Checkout
+      - uses: actions/checkout@v4
+
+      - name: Listing File on Runner
+      - run: ls -la

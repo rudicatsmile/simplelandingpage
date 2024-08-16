@@ -28,6 +28,7 @@ jobs:
 
   deploy-container:
     runs-on: ubuntu-latest
+    needs: test-build-push
     steps:
       - name: Deploy COntainer on VM
         uses: appleboy/ssh-action@v1.0.3
@@ -36,4 +37,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
           port: 22
-          script: whoami
+          script: |
+            docker login --username=${{ secrets.DOCKERHUB_USERNAME }} --password=${{ secrets.DOCKERHUB_TOKEN }}
+            docker pull rudicatsmile2/simplelandingpage:${{ github.run_number }}
+            docker run --name simplelandingpage-app -p 80:80 rudicatsmile2/simplelandingpage:${{ github.run_number }}

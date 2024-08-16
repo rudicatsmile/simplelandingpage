@@ -8,8 +8,8 @@ jobs:
   test-build-push:
     runs-on: ubuntu-latest
     steps:
-      #   - name: Git Checkout
-      - uses: actions/checkout@v4
+      - name: Git Checkout
+        uses: actions/checkout@v4
 
-      #   - name: Listing File on Runner
-      - run: ls -la
+      - name: Listing File on Runner
+        run: ls -la

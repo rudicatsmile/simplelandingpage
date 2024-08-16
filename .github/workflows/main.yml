@@ -40,4 +40,5 @@ jobs:
           script: |
             docker login --username=${{ secrets.DOCKERHUB_USERNAME }} --password=${{ secrets.DOCKERHUB_TOKEN }}
             docker pull rudicatsmile2/simplelandingpage:${{ github.run_number }}
+            docker rm -f simplelandingpage-app 
             docker run --name simplelandingpage-app -p 80:80 rudicatsmile2/simplelandingpage:${{ github.run_number }}

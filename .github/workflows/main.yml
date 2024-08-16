@@ -25,3 +25,15 @@ jobs:
         with:
           push: true
           tags: rudicatsmile2/simplelandingpage:${{ github.run_number }}
+
+  deploy-container:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy COntainer on VM
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          port: 22
+          script: whoami
